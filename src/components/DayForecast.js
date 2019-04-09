@@ -1,23 +1,24 @@
 import React from 'react';
-  
+
 class DayForecast extends React.Component {
   render() {
+    let { currentDay } = this.props
     return (
       <div className="daytime">
         <div className="day-night-info">
           <div className="left-side">
             <h2>DAY</h2>
             <div className="temp">
-              81&deg;
+              { currentDay.temp_max };
               <span className="label">HI</span>
             </div>
-            <div className="precipitation"> 
-              Precipitation: <span>10%</span> 
+            <div className="precipitation">
+              Precipitation: <span>{ currentDay.day.precipitation}</span>
             </div>
           </div>
-          <img src={process.env.PUBLIC_URL + "/weather_icons/01d.png"} alt="weather" />
+          <img src={ `${process.env.PUBLIC_URL}/weather_icons/${ currentDay.day.icon }.png` } alt="weather" />
         </div>
-        <p>Sun and some clouds with a shower or thunderstorm later in the afternoon.</p>
+        <p>{ currentDay.day.description }</p>
       </div>
     )
   }

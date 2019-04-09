@@ -1,17 +1,24 @@
 import React from 'react';
 import Day from './Day';
-  
+
 class Days extends React.Component {
   render() {
     return (
       <div>
-        <h1>Today's Weather</h1>
+        <h1>Weather For { this.props.cityState }</h1>
+        <h1>{ this.props.today.dt }</h1>
         <div className="days">
-          <Day />
-          <Day />
-          <Day />
-          <Day />
-          <Day />
+          {
+            this.props.data.city.map( (elem, index) => {
+              return <Day key={ elem.dt }
+                          day={ elem }                  index= { index }
+                          updateCurrentDay={ this.props.updateCurrentDay }
+                          currentDay={ this.props.currentDay }/>
+            } )
+
+
+          }
+
         </div>
       </div>
     )
